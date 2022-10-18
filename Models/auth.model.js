@@ -28,7 +28,7 @@ const makePassword = (password) => {
     return password
 }
 
-const validPassword = (password) => {
+const validPassword = (password, hash, salt) => {
     return true
 }
 
