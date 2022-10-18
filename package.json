@@ -20,6 +20,8 @@
   },
   "homepage": "https://github.com/Vinayaka2k/MyBlogApp#readme",
   "dependencies": {
+    "crypto": "^1.0.1",
+    "mongoose": "^6.6.5",
     "nodemon": "^2.0.20"
   }
 }
