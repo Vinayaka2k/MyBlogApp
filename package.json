@@ -1,0 +1,25 @@
+{
+  "name": "blog-app",
+  "version": "1.0.0",
+  "description": "App to display and create blogs",
+  "main": "index.js",
+  "scripts": {
+    "test": "npm run test",
+    "deploy": "npm run build",
+    "start-prod": "node index.js",
+    "start-dev": "nodemon index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Vinayaka2k/MyBlogApp.git"
+  },
+  "author": "Vinayaka2k",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Vinayaka2k/MyBlogApp/issues"
+  },
+  "homepage": "https://github.com/Vinayaka2k/MyBlogApp#readme",
+  "dependencies": {
+    "nodemon": "^2.0.20"
+  }
+}
