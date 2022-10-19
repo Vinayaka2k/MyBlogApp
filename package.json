@@ -23,6 +23,7 @@
     "crypto": "^1.0.1",
     "dotenv": "^16.0.3",
     "jsonwebtoken": "^8.5.1",
+    "loadash": "^1.0.0",
     "mongoose": "^6.6.5",
     "nodemon": "^2.0.20"
   }
