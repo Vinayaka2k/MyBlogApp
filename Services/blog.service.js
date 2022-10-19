@@ -40,18 +40,6 @@ const pushBlog = async (title, description, content, isPublic, userId, thumbnail
     }
 }
 
-const deleteBlog = async (id) => {
-    try {
-        const data = await BlogModel.findByIdAndDelete(id)
-        return data
-    }
-    catch (err) {
-        console.log(err)
-        return false
-    }
-    
-}
-
 const getBlogsByUser = async (userId) => {
     try {
         const blogs = await BlogModel.find({userId})

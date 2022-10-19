@@ -1,6 +1,6 @@
 const {login, signup, isUsernameAvail, getUserById, getAllUsers} = require("../Services/auth.service")
 const jwt = require("jsonwebtoken")
-const lodash = require("loadash")
+const {isString} = require("loadash")
 require("dotenv").config()
 
 const apiLogin = async (req,res) => {
