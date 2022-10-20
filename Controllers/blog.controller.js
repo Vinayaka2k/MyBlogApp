@@ -1,4 +1,4 @@
-const {getBlogs, getBlogsbyId, pushBlog, getOneBlog, deleteBlog, editBlog, checkBlogOwner, getBlogsbyUser} = require("../Services/blog.service")
+const {getBlogs, getBlogById, pushBlog, getOneBlog, deleteBlog, editBlog, checkBlogOwner, getBlogsByUser} = require("../Services/blog.service")
 
 const apiGetBlogs = async (req, res) => {
     try {
@@ -39,7 +39,7 @@ const apiGetBlogByUser = async (req, res) => {
     try {
         if(!(req.user.role === "admin" || req.user.id === userId))
             throw "permission denied"
-        const blogs = await getBlogsbyUser(userId)
+        const blogs = await getBlogsByUser(userId)
         if(blogs)
             res.json({success: true, blogs})
         else
@@ -55,7 +55,7 @@ const apiGetBlogById = async(req, res) => {
     try {
         if(id.length != 24)
             throw "invalid id"
-        const blog = await getBlogsbyId(id)
+        const blog = await getBlogById(id)
         if(blog) {
             if(blog.isPublic)
                 res.json({success: true, blog})
@@ -113,8 +113,7 @@ const apiEditBlog = async (req, res) => {
     const userId = req.user.id
     const {title, description, content, isPublic, thumbnail} = req.body
     try {
-        const isOwner = await checkBlogOwner(id, userId)
-        if(!isOwner)
+        if(!(req.user.role === "admin" || await checkBlogOwner(id, userId)))
             throw "permission denied"
         if(id.length != 24)
             throw "incorrect id"
@@ -130,5 +129,5 @@ const apiEditBlog = async (req, res) => {
 }
 
 module.exports = {
-
+    apiDeleteBlog, apiEditBlog, apiGetBlogById, apiGetBlogByUser, apiGetBlogs, apiGetOneBlog, apiPushBlog
 }

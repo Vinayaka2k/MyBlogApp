@@ -1,6 +1,6 @@
 const {login, signup, isUsernameAvail, getUserById, getAllUsers} = require("../Services/auth.service")
 const jwt = require("jsonwebtoken")
-const {isString} = require("loadash")
+const {isString} = require("lodash")
 require("dotenv").config()
 
 const apiLogin = async (req,res) => {
@@ -23,6 +23,7 @@ const apiSignup = async (req, res) => {
     const username = req.body.username
     const password = req.body.password
     const confPassword = req.body.confPassword
+    const role = req.body.role
     try {
         if(!username || !isString(username))
             throw "username is not a valid string"
@@ -37,7 +38,7 @@ const apiSignup = async (req, res) => {
         const dupName = await isUsernameAvail(username)
         if(!dupName)
             throw "username is already registered. Choose a different one"
-        const user = signup(username, password)
+        const user = signup(username, password, role)
         if(!user)
             throw "internal error"
         res.status(201).json({success: true, msg: "Please login to continue"})
@@ -52,9 +53,11 @@ const apiLogout = async (req, res) => {
     try {
         if(!isString(token))
             throw "refresh token is not a valid string"
-        // @todo invalidate the token
-        else
-            throw "invalid refresh token"
+        // localStorage.removeItem("authToken")
+        // localStorage.removeItem("refreshToken")
+        res.status(200).json({
+            "msg": "logged out"
+        })
     } catch(err) {
         res.status(400).json({success: false, err})
     }
@@ -75,7 +78,7 @@ const apiUpdateToken = async (req, res) => {
     }
 }
 
-const apiGetUsers = async () => {
+const apiGetUsers = async (req, res) => {
     try {
         const users = await getAllUsers()
         if(!users)

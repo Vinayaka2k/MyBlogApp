@@ -25,11 +25,14 @@ const userSchema = mongoose.Schema({
 })
 
 const makePassword = (password) => {
-    return password
+    const salt = crypto.randomBytes(16).toString("hex")
+    const hash = crypto.pbkdf2Sync(password, salt, 1000, 64, "sha512").toString("hex")
+    return {salt, hash}
 }
 
-const validPassword = (password, hash, salt) => {
-    return true
+const validPassword = (password, myHash, salt) => {
+    let hash = crypto.pbkdf2Sync(password, salt, 1000, 64, "sha512").toString("hex")
+    return hash === myHash
 }
 
 module.exports = {

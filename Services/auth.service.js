@@ -7,8 +7,10 @@ const login = async (username, password) => {
             throw "user not found"
         else {
             const {salt,hash} = user
-            if(validPassword(password, hash, salt))
+            if(validPassword(password, hash, salt)) {
                 return user
+            
+            }
             else
                 throw "wrong password"
         }
@@ -18,14 +20,16 @@ const login = async (username, password) => {
     }
 }
 
-const signup = async (username, password) => {
+const signup = async (username, password, role) => {
     try {
         let newUser = new User()
         newUser.username = username
+        newUser.role = role
         const {hash,salt} = makePassword(password)
         newUser.hash = hash
         newUser.salt = salt
         let userRes = await newUser.save()
+        console.log("NEW USER", userRes)
         return userRes
     } catch(err) {
         console.log(err)
@@ -35,9 +39,10 @@ const signup = async (username, password) => {
 
 const isUsernameAvail = async (username) => {
     try {
-        const user = User.findOne({username})
+        const user = await User.findOne({username})
+        // console.log(user)
         return user === null
-    } catch() {
+    } catch(err) {
         console.log(err)
         return false
     }
