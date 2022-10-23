@@ -6,7 +6,7 @@
 
 ## App
 Routes the path to the appropriate components
- "                  "/"                 <Home />
+                    "/"                 <Home />
                     "/blogs"            <Blogs/>
                     "/blog/:id"         <Blog />
                     "/signup"           <Signup />
