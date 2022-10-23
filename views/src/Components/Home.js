@@ -19,7 +19,7 @@ const Home = () => {
     }, [])
 
     return (
-        <div>
+            <div className="min-h-screen bg-primaryBg">            
             <Nav />
             {
                 auth ? null :
@@ -39,7 +39,6 @@ const Home = () => {
             </div>
 
             <div className="flex-1 h-1/2 md:h-3/4 grid place-content-center">
-                <img className="md:w-80 w-64" src="/main-cover.svg" alt="big svg" />
             </div>
             
         </div>

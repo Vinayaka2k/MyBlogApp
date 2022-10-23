@@ -19,7 +19,7 @@ export default async () => {
             localStorage.setItem("refreshToken", data.refreshToken)
             }
         else
-            alert("Your refresh token had expired. Please login again")
+            alert("Your refresh token has expired. Please login again")
         }
         return `Bearer ${localStorage.getItem("authToken")}`
     } catch(err) {

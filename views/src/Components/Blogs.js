@@ -3,6 +3,7 @@ import BlogCard from "./PseudoComponents/BlogCard"
 import { Link } from "react-router-dom"
 import axios from "axios"
 const baseUrl = "http://localhost:3001/api"
+const imgBaseUrl = "http://localhost:3001/images"
 
 const Blogs = () => {
     const [blogs, setBlogs] = useState([])
@@ -21,7 +22,7 @@ const Blogs = () => {
             <div className="p-4">
                 <Link className="flex align-middle justify-center rounded-sm w-min px-2 border-2 border-navBtn" to="/">
                     <div className="w-5 mr-2 my-auto">
-                        <img className="w-full" src="/back.png" alt="back"/>
+                        <img className="w-full" src= {imgBaseUrl + "/back.png" } alt="back"/>
                     </div>
                 back </Link>
             </div>

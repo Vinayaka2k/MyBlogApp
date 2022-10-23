@@ -16,7 +16,9 @@ mongoose.connect(process.env.MONGODB_URI).then(() => {
     console.log("Connection failed with error: ", err)
 }) 
 
-// app.use(express.static(path.resolve(__dirname, "./views/build")))
+app.use("/", express.static(path.resolve(__dirname, "./views/build")))
+app.use("/images", express.static(path.resolve(__dirname, "./images")))
+
 app.use(express.json())
 app.use(logger("dev"))
 app.use(cors())
