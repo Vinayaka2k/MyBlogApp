@@ -32,7 +32,7 @@ const Blogs = () => {
                     {
                     blogs.length === 0 ? <h1 className="text-navBtn text-2x1 text-center">Please wait</h1> : 
                         blogs.map((blog,i) => {
-                            return <BlogCard key={i} title={blog.title} description={blog.description} thumbnail={blog.thumbnail}/>
+                            return <BlogCard key={i} id={blog._id} title={blog.title} description={blog.description} thumbnail={blog.thumbnail}/>
                         })
                     }
                 </div>

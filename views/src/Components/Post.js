@@ -2,6 +2,7 @@ import axios from "axios"
 import React,{useState} from "react"
 import { useNavigate, Link } from "react-router-dom"
 import useBearer from "../Hooks/useBearer"
+const imgBaseUrl = "http://localhost:3001/images"
 
 const Post = () => {
     const nav = useNavigate()
@@ -27,7 +28,11 @@ const Post = () => {
 
         if(res.data.success) {
             const id = res.data.blog[0]._id
-            nav(`/blog/${id}`)
+            nav(`/blog/${id}`, {
+                state: {
+                    "id": id
+                }
+            })
         } else {
             alert(res.data.err)
         }
@@ -36,7 +41,10 @@ const Post = () => {
     return (
         <div className="min-h-screen  px-4 pb-8  bg-primaryBg grid place-content-center">
             <div className="py-8 px-3 md:px-10">
-                <Link className="flex align-middle justify-center rounded-sm w-min px-2 border-2 border-navBtn text-navBtn" to="/blogs"> <div className="w-5 mr-2 my-auto"><img className="w-full" src="/back.png" alt="back" /></div> back</Link>
+                <Link className="flex align-middle justify-center rounded-sm w-min px-2 border-2 border-navBtn text-navBtn" to="/blogs"> 
+                <div className="w-5 mr-2 my-auto">                        
+                    <img className="w-full" src= {imgBaseUrl + "/back.png" } alt="back"/>
+                </div> back</Link>
             </div>
             <form onSubmit={submitHandler} method="POST" action="/api/post" className="w-screen px-3 md:px-10 m-auto space-y-4">
                 <img className="w-full" src={thumbnail} alt="thumbnail" />

@@ -1,13 +1,15 @@
 import React,{useState, useEffect} from "react";
-import {Link} from "react-router-dom"
+import {Link, useLocation} from "react-router-dom"
 import {marked} from "marked"
 import DOMPurify from "dompurify"
 import useBearer from "../Hooks/useBearer"
 import axios from "axios";
 const baseUrl = "http://localhost:3001"
+const imgBaseUrl = "http://localhost:3001/images"
 
-const Blog = () => {
-    const id = "6354cae5f1853daf62b4f979"
+const Blog = ({route, navigation}) => {
+    const location = useLocation()
+    let id = location.pathname.split("/")[2]
     const [title, setTitle] = useState('')
     const [description, setDesc] = useState('')
     const [content, setContent] = useState('')
@@ -41,7 +43,7 @@ const Blog = () => {
             <div className="p-8">
                 <Link className="flex align-middle justify-center rounded-sm w-min px-2 border-2 border-navBtn text-navBtn" to="/blogs">
                     <div className="w-5 mr-2 my-auto">
-                        <img className="w-full" src="/back.png" alt="back"/>
+                        <img className="w-full" src= {imgBaseUrl + "/back.png" } alt="back"/>
                     </div>
                 back </Link>
             </div>

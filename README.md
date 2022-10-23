@@ -25,6 +25,14 @@ Fetches a list of all blogs in the useEffect hook by making a call to the endpoi
 ### Post
 Used to post a new blog. Multiple states are created for blog items like content, desc, thumbnail, etc. A basic form is displayed for the user to enter all the blog details and the above state values are updated on every change of the input fields. on submit, `setLoading` is set to true and a post request is made to the endpoint `/api/post`. And `useBearer` hook is used to provide the authToken to authenticate the current user. Once the blog has been posted, `useNaviagte` hook is used to naviagte to the newly created blog `/blog/:id`
 
+### Blog
+Used to display a single blog. `useLocation` hook is used to get the current id and a post request to `/api/blog/:id` is made in the useEffect hook by getting the authToken using the `useBearer` hook. All the blog details like title, thumbnail, etc are set on receipt of a response and are rednered appropriatly
+ 
+
+
+
+
+
 
 ## Pseudo Components
 
