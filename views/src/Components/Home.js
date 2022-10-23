@@ -9,16 +9,11 @@ const baseUrl = "http://localhost:3001"
 
 const Home = () => {
     const auth = useAuth()
-    const [blog, setBlog] = useState({
-        title: null,
-        description: null,
-        thumbnail: null
-    })
+    const [blog, setBlog] = useState(null)
 
     useEffect(() => {
         (async function () {
             let blogsList = await axios.get(baseUrl + "/api/blogs/latest")
-            // console.log(blogsList)
             setBlog(blogsList.data.blog)
         }());
     }, [])
@@ -33,11 +28,11 @@ const Home = () => {
             <div className="grid gap-20 md:flex w-100 h-full mt-32 md:my-32">
                 <div className="flex-1 h-3/4 grid place-content-center">
                     <h1 className="font-mono text-3x1 text-center">
-                        Latest
+                        Latest Blog
                     </h1>
                     {
                         blog ?             
-                        <BlogCard thumbnail="https://picsum.photos/200" title={blog.title} description={blog.description} id={blog._id}/>
+                        <BlogCard thumbnail={blog.thumbnail } title={blog.title} description={blog.description} id={blog._id}/>
                         : "Please wait, loading!"
                     }
                 </div>
