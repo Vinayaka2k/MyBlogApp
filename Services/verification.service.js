@@ -21,7 +21,6 @@ const isAuthenticated = async (req, res, next) => {
 
 const isAuthorized = async (req, res, next) => {
     try {
-        console.log(req.user)
         if(req.user.role !== "admin")
             throw "unauthorized user!"
         next()

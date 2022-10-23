@@ -7,7 +7,7 @@ import axios from "axios";
 const baseUrl = "http://localhost:3001"
 
 const Blog = () => {
-    const id = "6353eb0084fd83d4c2acafff"
+    const id = "6354cae5f1853daf62b4f979"
     const [title, setTitle] = useState('')
     const [description, setDesc] = useState('')
     const [content, setContent] = useState('')

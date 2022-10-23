@@ -33,13 +33,13 @@ const Nav = () => {
                 <Link className="w-navBtn text-center bg-navBtn shadow-nav rounded-sm text-white py-1" to="/blogs">BLOGS</Link>
                 {
                     auth ? 
-                    <div>
+                    <>
                         <Link className="w-navBtn text-center bg-navBtn shadow-nav rounded-sm text-white py-1" to="/me">PROFILE</Link>
                         <Link className="w-navBtn text-center bg-navBtn shadow-nav rounded-sm text-white py-1" to="/post">POST</Link>
                         { admin ? <Link className="w-navBtn text-center bg-navBtn shadow-nav rounded-sm text-white py-1" to="/admin">ADMIN</Link> : null}
-                    </div> : null
+                    </>: null
                 }
-                <Link className="w-navBtn text-center bg-navBtn shadow-nav rounded-sm text-white py-1" to="/about">ABOUT</Link>
+                <a href="https://github.com/Vinayaka2k/MyBlogApp" className="w-navBtn text-center bg-navBtn shadow-nav rounded-sm text-white py-1">ABOUT</a>
                 {
                     auth ? <button onClick={LogoutHandler} className="w-navBtn text-center bg-navBtn shadow-nav rounded-sm text-white py-1">LOGOUT</button>
                     : <Link className="w-navBtn text-center bg-navBtn shadow-nav rounded-sm text-white py-1" to="/login">LOGIN</Link>

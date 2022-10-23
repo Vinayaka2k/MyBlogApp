@@ -46,7 +46,7 @@ const apiGetBlogByUser = async (req, res) => {
             throw "internal error"
     } catch(err) {
         console.log(err)
-        return false
+        res.status(401).json({success: false, err})
     }
 }
 
