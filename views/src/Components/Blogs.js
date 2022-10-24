@@ -11,7 +11,7 @@ const Blogs = () => {
 
     useEffect(() => {
         (async function() {
-            let blogList = await axios.get(baseUrl + "/api/blogs")
+            let blogList = await axios.get(baseUrl + "/api/myblogs")
             setBlogs(blogList.data.blogs)
             // setLoading(false)
         }())
