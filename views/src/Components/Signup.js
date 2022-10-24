@@ -2,6 +2,7 @@ import axios from "axios";
 import React from "react";
 import {Link, useNavigate} from "react-router-dom"
 const baseUrl = "http://localhost:3001"
+const imgBaseUrl = "http://localhost:3001/images"
 
 const Signup = () => {
     const nav = useNavigate()
@@ -32,12 +33,13 @@ const Signup = () => {
             <div className="py-8 px-3 md:px-10">
                 <Link className="flex align-middle justify-center rounded-sm w-min px-2 border-2 border-navBtn text-navBtn" to="/">
                     <div className="w-5 mr-2 my-auto">
-                        <img className="w-full" src="/back.png" alt="back"/>
+                        <img className="w-full" src= {imgBaseUrl + "/back.png" } alt="back"/>
                     </div>
                 back </Link>
+                </div>
 
                 <form onSubmit={submitHandler} method="POST" action="/auth/signup" className="md:w-96 m-auto space-y-4 px-3 md:px-10">
-                    <h1 className="text-2x1 text-navBtn">Signup</h1>
+                    <h1 className="text-2xl text-navBtn">Signup</h1>
                     <div>
                         <input className="w-full p-2" type="text" name="username" placeholder="username" required/>
                             <p className="text-xs text-gray-500">username must be unique</p>
@@ -55,7 +57,6 @@ const Signup = () => {
 
                     <button type="submit" className="w-26 text-center px-3 py-0.5 border-2 border-navBtn rounded-sm hover:bg-navBtn hover:text-white">sign up</button>
                 </form>
-            </div>
         </div>
     ) 
 }

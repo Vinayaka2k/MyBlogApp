@@ -28,9 +28,8 @@ Used to post a new blog. Multiple states are created for blog items like content
 ### Blog
 Used to display a single blog. `useLocation` hook is used to get the current id and a post request to `/api/blog/:id` is made in the useEffect hook by getting the authToken using the `useBearer` hook. All the blog details like title, thumbnail, etc are set on receipt of a response and are rednered appropriatly
  
-
-
-
+### Profile
+Displays the username and the role first. Then, using a `BlogCard`, both public and private blogs of the user are displayed. `useUid` and `useUsername` are used to fetch the userId and the userName. Further, the list of blogs of the current user are fetched in the useEffect hook by my making a request to `/api/blogs`. 
 
 
 

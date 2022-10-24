@@ -9,7 +9,6 @@ import axios from "axios";
 const baseUrl = "http://localhost:3001"
 
 const Profile = () =>   {
-    const id = "6350d119428f3a996a5565dc"
     const [blogs, setBlogs] = useState([])
     const [unavailable, setUnavailable] = useState(false)
     const bearer = useBearer()
@@ -30,21 +29,22 @@ const Profile = () =>   {
             if(res.data.success) {
                 if(res.data.blogs.length == 0)
                     setUnavailable(true)
-                else
+                else {
                     setLoading(false)
-                setBlogs(res.data.blogs)
+                    setBlogs(res.data.blogs)
+                }
             } else {
                 setUnavailable(true)
             }
         })()
-    }, [id])
+    }, [])
 
     return (
         <div className="min-h-screen w-screen bg-primaryBg pb-24 md:pb-0">
             <Nav />
             <div className="grid place-content-center sm:my-16 md:my-0">
                 {
-                    id ? null :
+                    uid ? null :
                     <div className="h-44 my-4 space-y-2">
                         <div className="flex space-x-4 text-xl text-navBtn">
                             <h1>username:</h1>

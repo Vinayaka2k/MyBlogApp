@@ -2,6 +2,7 @@ import axios from "axios"
 import React from "react"
 import {Link, useNavigate} from "react-router-dom"
 let baseUrl = "http://localhost:3001"
+const imgBaseUrl = "http://localhost:3001/images"
 
 const Login = () => {
     const nav = useNavigate()
@@ -29,7 +30,10 @@ const Login = () => {
     return (
         <div className="min-h-screen  px-4 pb-8  bg-primaryBg grid place-content-center">
             <div className="py-8 px-3 md:px-10">
-                <Link className="flex align-middle justify-center rounded-sm w-min px-2 border-2 border-navBtn text-navBtn" to="/"> <div className="w-5 mr-2 my-auto"><img className="w-full" src="/back.png" alt="back" /></div> back</Link>
+                <Link className="flex align-middle justify-center rounded-sm w-min px-2 border-2 border-navBtn text-navBtn" to="/"> 
+                    <div className="w-5 mr-2 my-auto">
+                        <img className="w-full" src= {imgBaseUrl + "/back.png" } alt="back"/>
+                    </div> back</Link>
             </div>
             <form onSubmit={submitHandler} method="POST" action="/auth/login" className="md:w-96 m-auto space-y-4 px-3 md:px-10">
                 <h1 className="text-2xl text-navBtn">Login</h1>
