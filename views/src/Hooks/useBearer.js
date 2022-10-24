@@ -9,21 +9,21 @@ export default async () => {
         if(!authToken || !refreshToken)
             return false
         const token = decode(authToken)
-        if(token.exp < new Date().getTime() / 1000) {
-            const res = await axios.post(baseUrl + "/auth/token", JSON.stringify({
+        console.log(token.exp < (new Date().getTime() / 1000))
+        if(token.exp < (new Date().getTime() / 1000)) {
+            const res = await axios.post(baseUrl + "/auth/token", {
                 token: refreshToken
-            }));
-        const data = await res.json()
-        if(res.status === 200) {
-            localStorage.setItem("authToken", data.authToken)
-            localStorage.setItem("refreshToken", data.refreshToken)
-            }
-        else
-            alert("Your refresh token has expired. Please login again")
+            });
+            let data = res.data
+            if(res.status === 200) {
+                console.log("HERE")
+                localStorage.setItem("authToken", data.authToken)
+                localStorage.setItem("refreshToken", data.refreshToken)
+                }
         }
         return `Bearer ${localStorage.getItem("authToken")}`
     } catch(err) {
-        console.log(err)
-        return false
+        // console.log(err)
+        return err.response.data.err
     }
 }

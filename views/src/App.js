@@ -10,6 +10,7 @@ import Login from "./Components/Login"
 import Post from "./Components/Post"
 import Edit from "./Components/Edit"
 import Admin from "./Components/Admin"
+import Actions from "./Components/PseudoComponents/Actions"
 
 const App = () => {
     return (
@@ -25,6 +26,8 @@ const App = () => {
                     <Route exact path="/post" element={<Post />} />
                     <Route exact path="/blog/:id/edit" element={<Edit />} />
                     <Route exact path="/admin" element={<Admin />} />
+                    <Route exact path="/actions" element={<Actions id={""}/>} />
+
                 </Routes>
             </Router>
         </div>
