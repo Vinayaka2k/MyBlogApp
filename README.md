@@ -44,6 +44,9 @@ Used to edit and save an existing blog. First, a request is made to `/api/blog/:
 
 ## Pseudo Components
 
+### Actions
+Displays two buttons for edit and delete if the logged in user is either admin OR the blogOwner. Deletehandler opens up a confirm window clicking on which the blog is deleted and user is redirected to `/me` page. And edithandler redirects to the `/blog/:id/edit` page
+
 ### BlogCard
 Displays the thumbnail and title of the blog in a card. Clicking the card redirects to `/blog/id`.
 

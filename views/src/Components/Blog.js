@@ -41,7 +41,10 @@ const Blog = () => {
                     setUnavaialable(true)
             } catch(err) {
                 setUnavaialable(true)
-                alert(err.response.data.err)
+                if(err.response.status === 401)
+                    alert("You must be logged in to view this blog!")
+                else
+                    alert(err.response.data.err)
             }
         })()
     }, [])
