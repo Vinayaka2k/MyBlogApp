@@ -72,4 +72,50 @@ Gets the corresponding user id of the logged in user
 Gets the corresponding user name of the logged in user
 
 
-## 
+## API Endpoints
+
+### Routes for /auth
+`POST /auth/login` - EXtracts the username and password passed in the request body. A record is fetched from `User` model password is validated against the one fetched from mongo. If password is invalid, `401` is returned. If user was not found in mongo, `401` is returned. Two tokens `authToken` and `refreshToken` are generated and returned using a `200` status code
+
+`POST /auth/signup` - Extracts the username, password, confirmPassword and checks if any of these are invalid string or are empty. If yes, returns a `401`. If password length < 6 or username already exists in mongo or confPass and password dont match, return a `401`. Create a new record in mongo using the given parameters and save it and return `201`.
+
+`POST /auth/logout` - todo
+
+`POST /auth/token` - Extracts the token from the request and uses `jwt.verify` to extract userId from the token. Get the userdetails from the extracted id. Sign two tokens `authToken` and `refreshToken` and send it
+
+`GET /auth/users` - Use the verification service to check if user is authenticated and the user is an admin. If yes, fetch all the users from mongo and return a `200` along with the fetched users. `400` is returned in case of a bad request.
+
+
+### Routes for /blogs
+`GET /api/blogs` - Fetches a list of all blogs which are public. Returns a `400` for bad request
+`GET /blogs/latest` - Fetches the latest blog and retuns it. Returns a `400` for a bad request
+`POST /blogs` - If the user role is not admin or blogOwner, throws a `401`. Else gets both private and public blog by the user and returns a `200`
+`POST /post` - Saves the blog with the given details to mongo and returns a `400` for bad request
+`GET /blog/:id` - If the requested blog is public, then returns it. Else, if the blog is private, checks for the userId of the requested user. If it's admin or the blogOwner, returns the blog else returns `403`. If the blog is not found, throws a `403` 
+`DELETE /blog/:id` - If the requested user is admin or the blogOwner, then deletes it and returns `200`. If the blog is not found OR the current user is not the blogOwner, returns `403`  
+`PATCH /blog/:id` - If the requetsed user is admin or blogOwner, then updates the blog in mongo. Else, if requested user is not the admin or blogOwner, throws a `403`. If the blog is not found, throws a `403`
+
+### Verification service
+Consists of two methods isAuthenicated and isAuthorized which act as middleware and perform few actions on the request before the request reaches the `/api` or `/auth` routes.
+
+`isAuthenticated` - Checks if the authorization header is set. If yes, checks if the bearer token is avaialble. If yes, decodes the token and extracts the username and saves the username to the request and passes it forward. If any of the above conditions are not met, throws a `401`
+`isAuthorized` - Checks if the role of the current user is admin. If not, returns a `403`
+
+## MODELS
+
+### USER
+`title` - `String`
+`description` - `String`
+`content`  - `String` 
+`timestamp` - `Date`
+`isPublic`  - `Boolean`
+`thumbnail` - `String`
+`userId` - `String`
+
+
+### BLOG
+`username` - `String`
+`role` - `String`
+`hash` - `String`
+`salt` - `String`
+`timestamp` - `Date`
