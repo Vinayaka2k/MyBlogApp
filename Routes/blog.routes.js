@@ -2,7 +2,7 @@ const router = require("express").Router()
 const {apiGetBlogs, apiGetBlogById, apiPushBlog, apiGetOneBlog, apiDeleteBlog, apiEditBlog, apiGetBlogByUser} = require("../Controllers/blog.controller")
 const {isAuthenticated} = require("../Services/verification.service")
 
-router.get("/myblogs", apiGetBlogs)
+router.get("/blogs", apiGetBlogs)
 router.get("/blogs/latest", apiGetOneBlog)
 router.post("/blogs", isAuthenticated, apiGetBlogByUser)
 router.post("/post", isAuthenticated, apiPushBlog)
