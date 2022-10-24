@@ -8,7 +8,7 @@ const Post = () => {
     const nav = useNavigate()
     const [title, setTitle] = useState('')
     const [content, setContent] = useState('')
-    const [thumbnail, setThumbnail] = useState('https://via.placeholder.com/600x150?text=edit this')
+    const [thumbnail, setThumbnail] = useState('https://via.placeholder.com/150/FFFAFA/0D0C0C?text=edit')
     const [isPublic, setIsPublic] = useState(true)
     const [loading, setLoading] = useState(false)
     const bearer = useBearer()
@@ -47,7 +47,9 @@ const Post = () => {
                 </div> back</Link>
             </div>
             <form onSubmit={submitHandler} method="POST" action="/api/post" className="w-screen px-3 md:px-10 m-auto space-y-4">
-                <img className="w-full" src={thumbnail} alt="thumbnail" />
+                <div className="flex items-center justify-center">
+                    <img className="object-none object-center w-1/5 h-fit" src={thumbnail} alt="thumbnail" />
+                </div>
                 <h1 className="text-3xl text-navBtn">Post</h1>
                 <input  value={title} onChange={e => setTitle(e.target.value)} className="w-full p-2" type="text" name="title"  placeholder="title" required />
                 <div>

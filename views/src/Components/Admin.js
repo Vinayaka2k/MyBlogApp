@@ -46,7 +46,7 @@ const Admin = () => {
                     {
                         !loading ? 
                         users.map((user, i) => {
-                            return <UserCard key={i} username={user.username} role={user.role} id={user._id} thumbnail={`https://via.placeholder.com/600x200?text=${user.username}`} />
+                            return <UserCard key={i} username={user.username} role={user.role} id={user._id} thumbnail={`https://via.placeholder.com/150/FFFAFA/0D0C0C?text=${user.username}`} />
                         })
                         : unavailable ? 
                         <h1 className="p-10 text-center text-4xl text-navBtn">no users found</h1> :

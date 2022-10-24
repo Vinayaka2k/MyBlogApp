@@ -27,7 +27,7 @@ const Blogs = () => {
                 back </Link>
             </div>
 
-            <div className="grid place-content-center min-h-screen my-16 md:my-0">
+            <div className="grid place-items-center min-h-screen my-16 md:my-0">
                 <div className="grid gap-5 md:gap-8 sm:grid-cols-2 lg:grid-cols-3 md:align-middle lg:gap-5">
                     {
                     blogs.length === 0 ? <h1 className="text-navBtn text-2x1 text-center">Please wait</h1> : 

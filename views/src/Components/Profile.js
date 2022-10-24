@@ -44,7 +44,7 @@ const Profile = () =>   {
             <Nav />
             <div className="grid place-content-center sm:my-16 md:my-0">
                 {
-                    uid ? null :
+                    uid ? 
                     <div className="h-44 my-4 space-y-2">
                         <div className="flex space-x-4 text-xl text-navBtn">
                             <h1>username:</h1>
@@ -54,7 +54,7 @@ const Profile = () =>   {
                             <h1>Role:</h1>
                             <p>{admin ? "admin" : "user"}</p>
                         </div>
-                    </div>
+                    </div> : null
                 }
 
                 <div className="mb-6">

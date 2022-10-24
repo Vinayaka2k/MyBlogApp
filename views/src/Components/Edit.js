@@ -1,12 +1,12 @@
 import axios from "axios";
 import React, {useState, useEffect} from "react";
-import {Link, useNavigate} from "react-router-dom"
+import {Link, useNavigate, useLocation} from "react-router-dom"
 import useBearer from "../Hooks/useBearer";
-
-
+const imgBaseUrl = "http://localhost:3001/images"
 
 const Edit = () => {
-    let id = "6354cae5f1853daf62b4f979"
+    const location = useLocation()
+    let id = location.pathname.split("/")[2]
     const nav = useNavigate()
     const [title, setTitle] = useState('')
     const [description, setDescription] = useState('')
@@ -32,7 +32,7 @@ const Edit = () => {
                 setContent(res.data.blog.content);
                 setDescription(res.data.blog.description);
                 setIsPublic(res.data.blog.isPublic);
-                (res.data.thumbnail) ? setThumbnail(res.data.thumbnail) : setThumbnail(`https://via.placeholder.com/600x200?text=edit this`)
+                (res.data.blog.thumbnail) ? setThumbnail(res.data.blog.thumbnail) : setThumbnail(`https://via.placeholder.com/150/FFFAFA/0D0C0C?text=edit`)
             } else {
                 setUnavailable(true)
             }       
@@ -68,13 +68,16 @@ const Edit = () => {
         <div className="min-h-screen px-4 pb-8 bg-primaryBg grid place-content-center">
             <div className="py-8 px-3 md:px-10">
                 <Link aria-disabled={false} className="flex align-middle justify-center rounded-sm w-min px-2 border-2 border-navBtn text-navBtn" to={unavailable?"/":`/blog/${id}`}> 
-                    <div className="w-5 mr-2 my-auto"><img className="w-full" src="/back.png" alt="back" /></div> back</Link>
+                    <div className="w-5 mr-2 my-auto">                        
+                        <img className="w-full" src= {imgBaseUrl + "/back.png" } alt="back"/>
+                    </div> back</Link>
             </div>
             {
                 !loading ? 
                 <form onSubmit={submitHandler} method="POST" action="/api/post" className="w-screen px-3 md:px-10 m-auto space-y-4">
-                    <img className="w-full" src={thumbnail} alt="thumbnail" />
-                    <h1 className="text-3xl text-navBtn">Edit</h1>
+                    <div className="flex items-center justify-center mt-20">
+                        <img className="object-none object-center w-1/5 h-fit" src={thumbnail} alt="thumbnail" />
+                    </div>                    <h1 className="text-3xl text-navBtn">Edit</h1>
                     <input  value={title} onChange={e => setTitle(e.target.value)} className="w-full p-2" type="text" name="title"  placeholder="title" required />
                     <div>
                         <input placeholder="thumbnail image" type="url" value={thumbnail} onChange={e => setThumbnail(e.target.value)} className="w-full p-2" />

@@ -27,7 +27,7 @@ const Home = () => {
             }
             <div className="grid gap-20 md:flex w-100 h-full mt-32 md:my-32">
                 <div className="flex-1 h-3/4 grid place-content-center">
-                    <h1 className="font-mono text-3x1 text-center">
+                    <h1 className="font-mono text-3xl text-center">
                         Latest Blog
                     </h1>
                     {

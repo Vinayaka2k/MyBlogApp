@@ -10,7 +10,8 @@ module.exports = {
           purpleBg: "#9F5F80",
           primaryBg: "#FFC996",
           secondaryBg: "#FF8474",
-          navBtn: "#583D72"
+          navBtn: "#583D72",
+          contrastBg: "#74EFFF"
         },
         boxShadow: {
           nav: "5px 5px 4px 0px #9F5F806B"
