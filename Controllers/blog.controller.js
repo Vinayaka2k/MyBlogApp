@@ -15,7 +15,7 @@ const apiGetBlogs = async (req, res) => {
             throw "internal error"
     } catch(err) {
         console.log(err)
-        res.json({success: false, err})
+        res.status(400).json({success: false, err})
     }
 }
 
@@ -30,7 +30,7 @@ const apiGetOneBlog = async (req, res) => {
             throw "internal error" 
     } catch(err) {
         console.log(err)
-        res.json({success: false, err})
+        res.status(400).json({success: false, err})
     }
 }
 
@@ -70,7 +70,7 @@ const apiGetBlogById = async(req, res) => {
             throw "not found"
     } catch(err) {
         console.log(err)
-        res.json({success: false, err})
+        res.status(400).json({success: false, err})
     }
 }
 
@@ -85,7 +85,7 @@ const apiPushBlog = async (req, res) => {
             throw "internal error"
     } catch(err) {
         console.log(err)
-        res.json({success: false, err})
+        res.status(400).json({success: false, err})
     }
 }
 
@@ -99,7 +99,7 @@ const apiDeleteBlog = async (req, res) => {
             throw "incorrect id"
         const blog = await deleteBlog(id)
         if(blog)
-            res.json({success: true, blog})
+            res.status(200).json({success: true, blog})
         else
             throw "blog not found"
     } catch(err) {
