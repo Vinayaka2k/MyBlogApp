@@ -20,25 +20,30 @@ const Blog = ({route, navigation}) => {
     const bearer = useBearer()
     useEffect(() => {
         (async function() {
-            let res = await axios.get(baseUrl + `/api/blog/${id}`, {
-                headers: {
-                    "Authorization": await bearer
-                }
-            })
-            if(res.data.success) {
-                let blogObj = res.data.blog
-                setTitle(blogObj.title)
-                setDesc(blogObj.description)
-                const unsafeHtml = marked(blogObj.content)
-                const safeHtml = DOMPurify.sanitize(unsafeHtml)
-                setContent(safeHtml)
-                setThumbnail(blogObj.thumbnail)
-                setUserId(blogObj.userId)
-                setLoading(false)
-            } else 
+            try {
+                let res = await axios.get(baseUrl + `/api/blog/${id}`, {
+                    headers: {
+                        "Authorization": await bearer
+                    }
+                })
+                if(res.data.success) {
+                    let blogObj = res.data.blog
+                    setTitle(blogObj.title)
+                    setDesc(blogObj.description)
+                    const unsafeHtml = marked(blogObj.content)
+                    const safeHtml = DOMPurify.sanitize(unsafeHtml)
+                    setContent(safeHtml)
+                    setThumbnail(blogObj.thumbnail)
+                    setUserId(blogObj.userId)
+                    setLoading(false)
+                } else 
+                    setUnavaialable(true)
+            } catch(err) {
                 setUnavaialable(true)
+                alert(err.response.data.err)
+            }
         })()
-    })
+    }, [])
 
     return (
         <div className="min-h-screen bg-secondaryBg">
@@ -65,7 +70,7 @@ const Blog = ({route, navigation}) => {
                         {/* <Actions userId={userId} id={id} /> */}
                     </div>    
                 </div> 
-                : 
+                :
                 unavailable ? <h1 className="p-10 text-center text-4xl text-navBtn"> Blog not found</h1> :
                 <h1 className="p-10 text-center text-4xl text-navBtn">Loading, Please wait!</h1>
 

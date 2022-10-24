@@ -20,23 +20,27 @@ const Edit = () => {
 
     useEffect(() => {
         async function foo() {
-            let res = await axios.get(baseUrl + `/api/blog/${id}`, {
-                headers: {
-                    "Authorization": await bearer
-                }
-            })
-            if(res.data.success) {
-                setLoading(false);
-                setTitle(res.data.blog.title);
-                setThumbnail(res.data.blog.thumbnail);
-                setContent(res.data.blog.content);
-                setDescription(res.data.blog.description);
-                setIsPublic(res.data.blog.isPublic);
-                (res.data.blog.thumbnail) ? setThumbnail(res.data.blog.thumbnail) : setThumbnail(`https://via.placeholder.com/150/FFFAFA/0D0C0C?text=edit`)
-            } else {
+                try {
+                    let res = await axios.get(baseUrl + `/api/blog/${id}`, {
+                    headers: {
+                        "Authorization": await bearer
+                    }
+                })
+                if(res.data.success) {
+                    setLoading(false);
+                    setTitle(res.data.blog.title);
+                    setThumbnail(res.data.blog.thumbnail);
+                    setContent(res.data.blog.content);
+                    setDescription(res.data.blog.description);
+                    setIsPublic(res.data.blog.isPublic);
+                    (res.data.blog.thumbnail) ? setThumbnail(res.data.blog.thumbnail) : setThumbnail(`https://via.placeholder.com/150/FFFAFA/0D0C0C?text=edit`)
+                } else {
+                    setUnavailable(true)
+                }       
+            } catch(err) {
                 setUnavailable(true)
-            }       
-
+                alert(err.response.data.err)
+            }
         }
         foo()
     }, [])

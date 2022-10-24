@@ -12,8 +12,8 @@ const getBlogs = async () => {
 
 const getOneBlog = async () => {
     try{
-        const blog = await BlogModel.findOne({isPublic: true})
-        return blog
+        const blog = await BlogModel.find({isPublic: true}).sort({ _id: -1 }).limit(1)
+        return blog[0]
     } catch(err) {
         console.log(err)
         return false;

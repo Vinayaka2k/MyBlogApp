@@ -9,10 +9,10 @@ const BlogCard = ({thumbnail, title, description, id}) => {
                 <img className="w-4/6 h-44 m-auto" src={thumbnail} alt="img" />
             </div>
             <div className="px-3 py-2 space-y-1 bg-purpleBg text-white">
-                <h1 className="text-xl text-center">{title}</h1>
+                <h1 className="text-xl text-center overflow-hidden truncate">{title}</h1>
             </div>
-            <div className="px-3 py-1 space-y-1 bg-secondaryBg text-contrastBg">
-                <p className="text-sm text-center text-ellipsis overflow-hidden ...">{description}</p>
+            <div className="px-3 py-2 space-y-1 bg-secondaryBg text-black">
+                <p className="text-sm text-center overflow-hidden truncate">{description}</p>
                
             </div>
         </div>

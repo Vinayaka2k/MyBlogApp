@@ -68,7 +68,7 @@ const Profile = () =>   {
                     blogs.map((blog, i) => {
                         return <BlogCard key={i} title={blog.title} description={blog.description} id={blog._id} thumbnail={blog.thumbnail} />
                     })
-                    : unavailable ?   <h1 className="p-10 text-center text-4xl text-navBtn"> Blog not found</h1> 
+                    : unavailable ?   <h1 className="p-10 text-center text-4xl text-navBtn"> No Blogs found!</h1> 
                     : <h1 className="p-10 text-center text-4xl text-navBtn">Loading, Please wait!</h1>
                 }
                 </div>
