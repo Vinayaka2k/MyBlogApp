@@ -5,7 +5,7 @@ import Nav from "./PseudoComponents/Nav"
 import {Link} from "react-router-dom"
 import useAuth from "../Hooks/useAuth"
 
-const baseUrl = "http://localhost:3001"
+const baseUrl = ""
 
 const Home = () => {
     const auth = useAuth()

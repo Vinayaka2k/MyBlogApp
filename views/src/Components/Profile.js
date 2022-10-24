@@ -6,7 +6,7 @@ import useUsername from "../Hooks/useUsername"
 import Nav from "./PseudoComponents/Nav"
 import useAdmin from "../Hooks/useAdmin";
 import axios from "axios";
-const baseUrl = "http://localhost:3001"
+const baseUrl = ""
 
 const Profile = () =>   {
     const [blogs, setBlogs] = useState([])

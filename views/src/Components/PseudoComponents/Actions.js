@@ -12,7 +12,7 @@ const Actions = (props) => {
     const uid = useUid()
     const admin = useAdmin()
     const id = props.id
-    const baseUrl = "http://localhost:3001"
+    const baseUrl = ""
 
     const EditHandler = () => {
         nav(`/blog/${id}/edit`)

@@ -3,7 +3,6 @@ import { Link, useNavigate } from "react-router-dom";
 import useAdmin from "../../Hooks/useAdmin"
 import useAuth from "../../Hooks/useAuth"
 import useReset from "../../Hooks/useReset";
-const baseUrl = "http://localhost:3001"
 
 const Nav = () => {
     const navigate = useNavigate()

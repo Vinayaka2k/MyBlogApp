@@ -2,7 +2,7 @@ import axios from "axios";
 import React, {useState, useEffect} from "react";
 import {Link, useNavigate, useLocation} from "react-router-dom"
 import useBearer from "../Hooks/useBearer";
-const imgBaseUrl = "http://localhost:3001/images"
+const imgBaseUrl = "/images"
 
 const Edit = () => {
     const location = useLocation()
@@ -16,7 +16,7 @@ const Edit = () => {
     const [loading, setLoading] = useState(true)
     const [unavailable, setUnavailable] = useState(false)
     const bearer = useBearer()
-    const baseUrl = "http://localhost:3001"
+    const baseUrl = ""
 
     useEffect(() => {
         async function foo() {

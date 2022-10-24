@@ -5,8 +5,8 @@ import DOMPurify from "dompurify"
 import Actions from './PseudoComponents/Actions'
 import useBearer from "../Hooks/useBearer"
 import axios from "axios";
-const baseUrl = "http://localhost:3001"
-const imgBaseUrl = "http://localhost:3001/images"
+const baseUrl = ""
+const imgBaseUrl = "/images"
 
 const Blog = () => {
     const location = useLocation()

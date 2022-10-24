@@ -2,8 +2,8 @@ import React, {useEffect, useState} from "react"
 import BlogCard from "./PseudoComponents/BlogCard"
 import { Link } from "react-router-dom"
 import axios from "axios"
-const baseUrl = "http://localhost:3001/api"
-const imgBaseUrl = "http://localhost:3001/images"
+const baseUrl = ""
+const imgBaseUrl = "/images"
 
 const Blogs = () => {
     const [blogs, setBlogs] = useState([])
@@ -11,7 +11,7 @@ const Blogs = () => {
 
     useEffect(() => {
         (async function() {
-            let blogList = await axios.get(baseUrl + "/blogs")
+            let blogList = await axios.get(baseUrl + "/api/blogs")
             setBlogs(blogList.data.blogs)
             // setLoading(false)
         }())

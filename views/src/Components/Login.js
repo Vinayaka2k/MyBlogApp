@@ -1,8 +1,8 @@
 import axios from "axios"
 import React from "react"
 import {Link, useNavigate} from "react-router-dom"
-let baseUrl = "http://localhost:3001"
-const imgBaseUrl = "http://localhost:3001/images"
+let baseUrl = ""
+const imgBaseUrl = "/images"
 
 const Login = () => {
     const nav = useNavigate()

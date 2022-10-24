@@ -2,7 +2,7 @@ import axios from "axios"
 import React,{useState} from "react"
 import { useNavigate, Link } from "react-router-dom"
 import useBearer from "../Hooks/useBearer"
-const imgBaseUrl = "http://localhost:3001/images"
+const imgBaseUrl = "/images"
 
 const Post = () => {
     const nav = useNavigate()
@@ -13,7 +13,7 @@ const Post = () => {
     const [loading, setLoading] = useState(false)
     const bearer = useBearer()
     const [description, setDescription] = useState('')
-    const baseUrl = "http://localhost:3001"
+    const baseUrl = ""
 
     const submitHandler = async (e) => {
         e.preventDefault()

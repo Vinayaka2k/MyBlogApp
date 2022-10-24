@@ -3,7 +3,7 @@ import UserCard from "./PseudoComponents/UserCard"
 import Nav from "./PseudoComponents/Nav"
 import useBearer from "../Hooks/useBearer";
 import axios from "axios";
-const baseUrl = "http://localhost:3001"
+const baseUrl = ""
 
 const Admin = () => {
     const [users, setUsers] = useState([])

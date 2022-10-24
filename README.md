@@ -139,3 +139,12 @@ Consists of two methods isAuthenicated and isAuthorized which act as middleware 
 `salt` - `String`
 
 `timestamp` - `Date`
+
+## BUILD COMMAND
+`npm run deploy`
+
+## START DEV
+`npm run start-dev`
+
+## START PROD
+`npm run start-prod`
