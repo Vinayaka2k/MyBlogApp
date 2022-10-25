@@ -140,11 +140,13 @@ Consists of two methods isAuthenicated and isAuthorized which act as middleware 
 
 `timestamp` - `Date`
 
-## BUILD COMMAND
+### BUILD COMMAND
 `npm run deploy`
 
-## START DEV
+### START DEV
 `npm run start-dev`
 
-## START PROD
+### START PROD
 `npm run start-prod`
+
+## CI/CD
