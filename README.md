@@ -1,14 +1,14 @@
 # MyBlogApp
 
-## Fork the repo and Use the below commands to build, deploy and start the service: 
+### Fork the repo and Use the below commands to build, deploy and start the service: 
 
-### BUILD COMMAND
+#### BUILD COMMAND
 `npm run deploy`
 
-### START DEV COMMAND
+#### START DEV COMMAND
 `npm run start-dev`
 
-### START PROD COMMAND
+#### START PROD COMMAND
 `npm run start-prod`
 
 
