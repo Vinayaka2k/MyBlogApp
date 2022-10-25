@@ -8,16 +8,16 @@ jobs:
     name: render_deploy
     runs-on: ubuntu-20.04
     steps:
-      - name: render_deploy_action
-      # - uses: actions/checkout@v3
-      # - uses: actions/setup-node@v3
-        # with: 
-          # node_version: '16'
-      # - name: npm install
-      #   run: npm install
       - uses: bounceapp/render-action@0.2.0
         with: 
           email: ${{secrets.RENDER_EMAIL}}
           password: ${{secrets.RENDER_PASSWORD}}
           token: ${{secrets.MY_GITHUB_TOKEN}}
           service-id: ${{secrets.RENDER_SERVICE_ID}}
+    # - uses: actions/checkout@v3
+      # - uses: actions/setup-node@v3
+        # with: 
+          # node_version: '16'
+      # - name: npm install
+      #   run: npm install
+      
