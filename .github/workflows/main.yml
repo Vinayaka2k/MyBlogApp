@@ -6,13 +6,12 @@ on:
       - main
       
 jobs:
-  blog_app_job:
+  cicd_pipeline:
     runs-on: ubuntu-20.04
     steps:
-      - name: Hi
-        run: |
-          echo "hello world"
-      - name: Date
-        run: Date
-      - name: Dir
-        run: ls -l
+      - uses: actions/checkout@v3
+      - uses: actions/setup-node@v3
+        with: 
+          node_version: '16'
+      - name: npm install
+        run: npm install
