@@ -1,5 +1,17 @@
 # MyBlogApp
 
+## Fork the repo and Use the below commands to build, deploy and start the service: 
+
+### BUILD COMMAND
+`npm run deploy`
+
+### START DEV COMMAND
+`npm run start-dev`
+
+### START PROD COMMAND
+`npm run start-prod`
+
+
 ## Components
 
 ## App
@@ -140,13 +152,13 @@ Consists of two methods isAuthenicated and isAuthorized which act as middleware 
 
 `timestamp` - `Date`
 
-### BUILD COMMAND
-`npm run deploy`
+### DEPLOYING TO RENDER
+This project uses render as the default service for deploying the application. First, the backend npm modules are installed and then the frontend is built which creates a `/build` folder that is copied to the backend main folder and the `/build` folder is statically served from the backend. This is the main use of the build command. Finally, the service is started in nodemon in dev mode and is started from node in prod mode.
 
-### START DEV
-`npm run start-dev`
+### SETTING UP RENDER
+Render is setup by providing the link to the github repo and the .env variables are provided. Later, the option for auto-deploy when commit to main branch is turned on and a URL link is generated. The service spins down after 15mins of inactivity and spins-up again after it's hit with a new request
 
-### START PROD
-`npm run start-prod`
+### CI/CD
+Used github actions initially to build, deploy and start npm package hosted on render. Currently, using render's built-in service to auto build, deploy and start on every commit to the main branch. 
+`workflows/main.yml` takes care of bunping up the patch number and pushing the tag so that new release can be rolled out
 
-## CI/CD
