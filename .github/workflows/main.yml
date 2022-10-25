@@ -1,22 +1,18 @@
-# name: workflow_1
-# on: 
-#   push:
-#     branches:
-#       - main
-# jobs:
-#   deploy:
-#     name: render_deploy
-#     runs-on: ubuntu-20.04
-#     steps:
-#     - uses: actions/checkout@v3
-#     - uses: actions/setup-node@v3
-#       with:
-#         node_version: '16'
-#     - name: npm install
-#       run: npm install
-#     - uses: bounceapp/render-action@0.2.0
-#       with: 
-#           email: ${{secrets.RENDER_EMAIL}}
-#           password: ${{secrets.RENDER_PASSWORD}}
-#           token: ${{secrets.MY_GITHUB_TOKEN}}
-#           service-id: ${{secrets.RENDER_SERVICE_ID}}
+name: Bump version and push tag
+on: 
+  push:
+    branches:
+      - main
+jobs:
+  build:
+    runs-on: ubuntu-22.04
+    steps:
+    - uses: actions/checkout@v3
+      with:
+        fetch-depth: '0'
+
+    - name: Bump version and push tag
+      uses: anothrNick/github-tag-action@1.36.0
+      env:
+        GITHUB_TOKEN: ${{secrets.MY_GITHUB_TOKEN}}
+        WITH_V: true
